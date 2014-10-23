@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load django_markdown %}
+{% block title %}Blog{% endblock %}
+{% block description %}{% endblock %}
+{% block content %}
+
+    {% for object in  object_list %}
+        {{ object.title }}
+    {% endfor %}
+    {% for post in posts_list %}
+        <div class="blog-post">
+            <h2 class="blog-post-title"><a href="{% url 'entry_detail' slug=post.slug %}">{{ post.title }}</a></h2>
+
+            <p class="blog-post-meta">{{ post.created }} by {{ user }} | </p>
+            {{ post.body|markdown }}
+            <div class="blog-post-meta">
+                <p>Tags:
+                    {% for t in post.tags.all %}
+                        <a href="{% url 'tag_detail' tag=t.slug %}">{{ t.slug }}</a> -
+                    {% endfor %}
+                </p>
+
+                <p> Categorias:
+                    {% for c in post.category.all %}
+                        <a href="{% url 'category_detail' category=c.slug %}">{{ c.slug }} -</a>
+                    {% endfor %}
+                </p>
+                <a href="{% url 'entry_detail' slug=post.slug %}#disqus_thread">
+                    <p>¿Quieres comentar algo?<i class="fa fa-comments-o fa-3x"></i></p></a>
+            </div>
+        </div><!-- /.blog-post -->
+    {% endfor %}
+    <ul class="pagination">
+        {% if posts_list.has_previous %}
+            <li><a href="?page={{ posts_list.previous_page_number }}">Previous</a></li>
+        {% else %}
+            <li class="disabled"><a href="#">Previous</a></li>
+        {% endif %}
+        {% for number in number_pages %}
+            {% if posts_list.has_next or posts_list.has_previous %}
+                {% if number == posts_list.number %}
+                    <li class="active"><a href="#">{{ number }}</a></li>
+                {% else %}
+                    <li><a href="?page={{ number }}">{{ number }}</a></li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if posts_list.has_next %}
+            <li><a href="?page={{ posts_list.next_page_number }}">Next</a></li>
+        {% else %}
+            <li class="disabled"><a href="#">Next</a></li>
+        {% endif %}
+    </ul>
+{% endblock %}
+{% block tags %}
+    <div class="tag-cloud">
+        <h2>
+            {% for key, value in tags.iteritems %}
+                {% if value == 1 %}
+                    <span class="cloud-1"><a href="{% url 'tag_detail' tag=key %}">{{ key }}</a> - </span>
+                {% elif value == 2 %}
+                    <span class="cloud-2"><a href="{% url 'tag_detail' tag=key %}">{{ key }}</a> - </span>
+                {% elif value == 3 %}
+                    <span class="cloud-3"><a href="{% url 'tag_detail' tag=key %}">{{ key }}</a> - </span>
+                {% elif value == 4 %}
+                    <span class="cloud-4"><a href="{% url 'tag_detail' tag=key %}">{{ key }}</a> - </span>
+                {% elif value == 5 %}
+                    <span class="cloud-5"> </span>
+                {% elif value == 6 %}
+                    <span class="cloud-6"><a href="{% url 'tag_detail' tag=key %}">{{ key }}</a> - </span>
+                {% elif value == 7 %}
+                    <span class="cloud-7"><a href="{% url 'tag_detail' tag=key %}">{{ key }}</a> - </span>
+                {% elif value == 8 %}
+                    <span class="cloud-8"><a href="{% url 'tag_detail' tag=key %}">{{ key }}</a> - </span>
+                {% elif value == 9 %}
+                    <span class="cloud-9"><a href="{% url 'tag_detail' tag=key %}">{{ key }}</a> - </span>
+                {% elif value == 10 %}
+                    <span class="cloud-10"><a href="{% url 'tag_detail' tag=key %}">{{ key }}</a> - </span>
+                {% endif %}
+
+            {% endfor %}
+        </h2>
+    </div>
+{% endblock %}
+{% block categories %}
+    <h2>
+        {% for key, value in categories.iteritems %}
+            {% if value == 1 %}
+                <span class="cloud-1"><a href="{% url 'category_detail' category=key %}">{{ key }}</a> - </span>
+            {% elif value == 2 %}
+                <span class="cloud-2"><a href="{% url 'category_detail' category=key %}">{{ key }}</a> - </span>
+            {% elif value == 3 %}
+                <span class="cloud-3"><a href="{% url 'category_detail' category=key %}">{{ key }}</a> - </span>
+            {% elif value == 4 %}
+                <span class="cloud-4"><a href="{% url 'category_detail' category=key %}">{{ key }}</a> - </span>
+            {% elif value == 5 %}
+                <span class="cloud-5"><a href="{% url 'category_detail' category=key %}">{{ key }}</a> - </span>
+            {% elif value == 6 %}
+                <span class="cloud-6"><a href="{% url 'category_detail' category=key %}">{{ key }}</a> - </span>
+            {% elif value == 7 %}
+                <span class="cloud-7"><a href="{% url 'category_detail' category=key %}">{{ key }}</a> - </span>
+            {% elif value == 8 %}
+                <span class="cloud-8"><a href="{% url 'category_detail' category=key %}">{{ key }}</a> - </span>
+            {% elif value == 9 %}
+                <span class="cloud-9"><a href="{% url 'category_detail' category=key %}">{{ key }}</a> - </span>
+            {% elif value == 10 %}
+                <span class="cloud-10"><a href="{% url 'category_detail' category=key %}">{{ key }}</a> - </span>
+            {% endif %}
+        {% endfor %}
+    </h2>
+{% endblock %}

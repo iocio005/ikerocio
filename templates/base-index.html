@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block web-title %}  {% endblock %}
+    {% block web-favicon %} {% endblock %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ STATIC_URL }}ikerocio/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <!-- Fonts -->
+    <link href="{{ STATIC_URL }}ikerocio/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- Custom Theme CSS -->
+    <link href="{{ STATIC_URL }}ikerocio/bootstrap/css/grayscale.css" rel="stylesheet">
+    <style>{% block styles %}{% endblock %}</style>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="#page-top">
+                {% block web-nav-name %}
+                {% endblock %}
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                {% block nav %}
+                {% endblock %}
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<section class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    {% block welcome-page %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="container content-section text-center sobre-mi">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            {% block first-section %}
+            {% endblock %}
+        </div>
+    </div>
+</section>
+
+<section id="CV" class="content-section text-center cv-section">
+    <div class="container">
+        <div class="col-lg-8 col-lg-offset-2">
+            {% block second-section %}
+            {% endblock %}
+        </div>
+    </div>
+</section>
+
+<section id="Blog" class="container content-section text-center blog">
+    <div class="col-lg-8 col-lg-offset-2">
+        {% block third-section %}
+        {% endblock %}
+        <a href="/blog/" class="btn btn-default btn-lg btn-blog">Entrar a Blog</a>
+    </div>
+</section>
+<section id="picture" class="container content-section text-center fotografia">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            {% block fourth-section %}
+            {% endblock %}
+        </div>
+    </div>
+</section>
+<section id="contact" class="container content-section text-center contact">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            {% block fifth-section %}
+            {% endblock %}
+            <ul class="list-inline banner-social-buttons">
+                <li><a href="http://twitter.com/iocio" class="btn btn-default btn-lg btn-twitter"><i
+                        class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                </li>
+                <li><a href="https://github.com/IronSummitMedia/startbootstrap"
+                       class="btn btn-default btn-lg btn-github"><i
+                        class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                </li>
+                <li><a href="https://plus.google.com/+Startikerocio/bootstrap/posts" class="btn btn-default btn-lg btn-facebook"><i
+                        class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                </li>
+                <li><a href="#" class="btn btn-default btn-lg btn-flickr"><i
+                        class="fa fa-flickr fa-fw"></i> <span class="network-name">Flickr</span></a>
+                </li>
+            </ul>
+            <!--=== Contact Form ===-->
+            <form id="contact-form" class="col-sm-8 col-sm-offset-2" action="/check-form/" method="POST" novalidate>
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+                <div class="form-group">
+                    <div class="controls">
+                        {{ form.name }}
+                    </div>
+                </div>
+                <!-- End name input -->
+                <div class="form-group">
+                    <div class=" controls">
+                        {{ form.email }}
+                    </div>
+                </div>
+                <!-- End email input -->
+                <div class="form-group">
+                    <div class="controls">
+                        {{ form.body }}
+                    </div>
+                </div>
+                <!-- End textarea -->
+                <p class="text-center">
+                    <button name="submit" id="contact-form-button" type="submit" class="btn btn-quattro"
+                            data-error-message="Error!"
+                            data-sending-message="Enviando..." data-ok-message="Mensaje Enviado"><i
+                            class="fa fa-paper-plane"></i>Enviar mensaje
+                    </button>
+                </p>
+                <input type="hidden" name="submitted" id="submitted" value="true"/>
+            </form>
+            <br>
+            <!-- End contact-form -->
+        </div>
+    </div>
+</section>
+<div id="map">
+
+</div>
+<!-- Core JavaScript Files -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{{ STATIC_URL }}ikerocio/bootstrap/js/bootstrap.min.js"></script>
+<script src="{{ STATIC_URL }}ikerocio/bootstrap/js/jquery.easing-1.3.min.js"></script>
+<script src="{{ STATIC_URL }}ikerocio/bootstrap/js/me.js"></script>
+<!-- Google Maps API Key - You will need to use your own API key to use the map feature -->
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-22865130-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<!-- Custom Theme JavaScript -->
+<script src="{{ STATIC_URL }}ikerocio/bootstrap/js/grayscale.js"></script>
+
+</body>
+
+</html>

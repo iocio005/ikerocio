@@ -1,0 +1,5 @@
+Django==1.7
+Markdown==2.5.1
+django-markdown==0.7.1
+django-markitup==2.2.2
+django-tinymce==1.5.3

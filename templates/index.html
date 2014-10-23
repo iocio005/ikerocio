@@ -1,0 +1,122 @@
+{% extends 'base-index.html' %}
+{% load django_markdown %}
+{% block styles %}
+    .intro{
+    background: url('{{ welcome_page.bg }}') no-repeat bottom center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    }
+    .sobre-mi {
+    width: 100%;
+    padding: 170px 0;
+    color: #fff;
+    background-color: {{ aboutme_page.bg }};
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    }
+    .cv-section {
+    width: 100%;
+    padding: 170px 0;
+    color: #fff;
+    background: {{ cv_page.bg }};
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    }
+    .blog {
+    width: 100%;
+    padding: 170px 0;
+    color: #000;
+    background-color: {{ blog_page.bg }};
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    }
+    .fotografia {
+    background: url({{ picture_page.bg }}) no-repeat center center scroll;
+    width: 100%;
+    padding: 170px 0;
+    color: #fff;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    }
+    .contact {
+    width: 100%;
+    padding: 170px 0;
+    color: #fff;
+    background-color: {{ contact_page.bg }};
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    }
+{% endblock %}
+{% block web-title %}
+    <title>{{ config.web_title }}</title>
+{% endblock %}
+
+{% block web-favicon %}
+    <link rel="icon" type="image/png" href="{{ config.favicon.background }}"/>
+{% endblock %}
+
+{% block web-nav-name %}
+    <i class="fa {{ config.welcome_icon }}"></i><span class="light">{{ config.welcome_title }}</span>
+{% endblock %}
+
+{% block nav %}
+    <li class="page-scroll">
+        <a href="#about">Sobre Mi</a>
+    </li>
+    <li class="page-scroll">
+        <a href="#CV">CV</a>
+    </li>
+    <li class="page-scroll">
+        <a href="#Blog">BLOG</a>
+    </li>
+    <li class="page-scroll">
+        <a href="#picture">Fotografia</a>
+    </li>
+    <li class="page-scroll">
+        <a href="#contact">Contacto</a>
+    </li>
+{% endblock %}
+
+{% block welcome-page %}
+    <h1 class="brand-heading">{{ welcome_page.body }}</h1>
+    <p class="intro-text">{{ welcome_page.undertitle }}</p>
+    <div class="page-scroll">
+        <a href="#about" class="btn btn-circle">
+            <i class="fa fa-angle-double-down animated"></i>
+        </a>
+    </div>
+{% endblock %}
+
+{% block first-section %}
+    {{ second_page.body|markdown }}
+{% endblock %}
+
+{% block second-section %}
+    {{ third_page.body|markdown }}
+    <a href="/cv/" class="btn btn-default btn-lg btn-cv">Curriculum Vitae</a>
+{% endblock %}
+
+{% block third-section %}
+    {{ blog_page.body|markdown }}
+{% endblock %}
+
+{% block fourth-section %}
+    {{ picture_page.body|markdown }}
+{% endblock %}
+
+{% block fifth-section %}
+    {{ contact_page.body|markdown }}
+{% endblock %}

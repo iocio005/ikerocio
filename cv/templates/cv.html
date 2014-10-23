@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iker Ocio - CV</title>
+    <link rel="icon" type="image/png" href="{{ STATIC_URL }}bootstrap/img/favicon.png"/>
+    <link href="{{ STATIC_URL }}cv/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}cv/css/font-awesome.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}cv/css/main.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="{{ STATIC_URL }}cv/js/html5shiv.js"></script>
+      <script src="{{ STATIC_URL }}cv/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+{% load django_markdown %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="photo-header" class="text-center">
+                <!-- PHOTO (AVATAR) -->
+                <div id="photo">
+                    <img src="{{ STATIC_URL }}cv/img/iker.jpg" alt="avatar">
+                </div>
+                <div id="text-header">
+                    {{ cv.first_presentation|markdown }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-7">
+            <!-- ABOUT ME -->
+            <div class="box">
+                <h2>Sobre mí</h2>
+                {{ cv.about_me|markdown }}
+            </div>
+            <!-- EDUCATION -->
+            <div class="box">
+                <h2>Educación</h2>
+                <ul id="education" class="clearfix">
+                    {% for educate in cv.education.all %}
+                        <li>
+                            <div class="year pull-left">{{ educate.year }}</div>
+                            <div class="description pull-right">
+                                <h3>{{ educate.title }}</h3>
+                                {{ educate.description|markdown }}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- EXPERIENCES -->
+            <div class="box">
+                <h2>Experiencia</h2>
+                {% for work in cv.experience.all %}
+                    <div class="job clearfix">
+                        <div class="col-xs-3">
+                            <div class="where">{{ work.title }}</div>
+                            <div class="year">{{ work.year }}</div>
+                        </div>
+                        <div class="col-xs-9">
+                            <div class="profession">{{ work.work_name }}</div>
+                            <div class="description">{{ work.description }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        <!-- CONFERENCES -->
+            <div class="box">
+                <h2>CONFERENCIAS / CHARLAS</h2>
+                {% for conference in cv.conferences.all %}
+                    <div class="job clearfix">
+                        <div class="col-xs-9">
+                            <div class="where">{{ conference.name }} | {{conference.year }}</div>
+                            <div class="year">{{ conference.place }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+            <!-- CONTACT -->
+            <div class="box clearfix">
+                <h2>Contacto</h2>
+                {% for c in cv.contact.all %}
+                    <div class="contact-item">
+                        <div class="icon pull-left text-center"><span class="fa {{ c.icon }} fa-fw"></span></div>
+                        <div class="title only pull-right">{{ c.contact }}</div>
+                        <div class="description pull-right">{{ c.description }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- SKILLS -->
+            <div class="box">
+                <h2>Conocimientos</h2>
+
+                <div class="skills">
+                    {% for s in cv.skill.all %}
+                        {{ s.dotpercent }}
+                        <div class="item-skills" data-percent="{{ s.percent }}">{{ s.name }}</div>
+                    {% endfor %}
+                    <div class="skills-legend clearfix">
+                        <div class="legend-left legend">Beginner</div>
+                        <div class="legend-left legend"><span>Proficient</span></div>
+                        <div class="legend-right legend"><span>Expert</span></div>
+                        <div class="legend-right legend">Master</div>
+                    </div>
+                </div>
+            </div>
+            <!-- LANGUAGES -->
+            <div class="box">
+                <h2>Idiomas</h2>
+
+                <div id="language-skills">
+                    {% for l in cv.language.all %}
+                        <div class="skill">{{ l.language }}
+                            <div class="icons pull-right">
+                                <div style="width: 60%;" class="icons-red"></div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- HOBBIES -->
+            <div class="box">
+                <h2>Hobbies</h2>
+                {% for hobbie in cv.hobbies.all %}
+                    <div class="hobby">{{ hobbie.hobbie }}</div>
+                {% endfor %}
+                </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-22865130-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<!-- JQUERY -->
+<script src="{{ STATIC_URL }}cv/js/jquery.min.js"></script>
+<!-- BOOTSTRAP -->
+<script src="{{ STATIC_URL }}cv/js/bootstrap.min.js"></script>
+<!-- SCRIPTS -->
+<script src="{{ STATIC_URL }}cv/js/scripts.js"></script>
+</body>
+</html>
