@@ -11,13 +11,37 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{ STATIC_URL }}ikerocio/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <!-- Fonts -->
-    <link href="{{ STATIC_URL }}ikerocio/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}ikerocio/bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet"
+          type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
           type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <!-- Custom Theme CSS -->
     <link href="{{ STATIC_URL }}ikerocio/bootstrap/css/grayscale.css" rel="stylesheet">
     <style>{% block styles %}{% endblock %}</style>
+
+    <style>
+        .p-description p {
+            font-size: 14px;
+        }
+
+        .member-thumb {
+            width: 248px;
+            height: 217px;
+            overflow: hidden;
+            border-radius: 50px;
+        }
+
+        .project-title p {
+            color: black;
+            font-size: 70px;
+            font-align: center;
+        }
+
+        .modal p {
+            color: black;
+        }
+    </style>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
@@ -73,6 +97,15 @@
     </div>
 </section>
 
+<section id="projects" class="content-section text-center projects-section">
+    <div class="container">
+        <h2>Algunos Proyectos</h2>
+        {% block project-section %}
+
+        {% endblock %}
+
+    </div>
+</section>
 <section id="CV" class="content-section text-center cv-section">
     <div class="container">
         <div class="col-lg-8 col-lg-offset-2">
@@ -104,17 +137,18 @@
             {% endblock %}
             <ul class="list-inline banner-social-buttons">
                 <li><a href="http://twitter.com/iocio" class="btn btn-default btn-lg btn-twitter"><i
-                        class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        class="fa fa-twitter fa-fw" target="_blank"></i> <span class="network-name">Twitter</span></a>
                 </li>
                 <li><a href="https://github.com/IronSummitMedia/startbootstrap"
                        class="btn btn-default btn-lg btn-github"><i
-                        class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                        class="fa fa-github fa-fw" target="_blank"></i> <span class="network-name">Github</span></a>
                 </li>
-                <li><a href="https://plus.google.com/+Startikerocio/bootstrap/posts" class="btn btn-default btn-lg btn-facebook"><i
-                        class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                <li><a href="https://plus.google.com/+Startikerocio/bootstrap/posts"
+                       class="btn btn-default btn-lg btn-facebook"><i
+                        class="fa fa-facebook fa-fw" target="_blank"></i> <span class="network-name">Facebook</span></a>
                 </li>
                 <li><a href="#" class="btn btn-default btn-lg btn-flickr"><i
-                        class="fa fa-flickr fa-fw"></i> <span class="network-name">Flickr</span></a>
+                        class="fa fa-flickr fa-fw" target="_blank"></i> <span class="network-name">Flickr</span></a>
                 </li>
             </ul>
             <!--=== Contact Form ===-->
@@ -140,7 +174,7 @@
                 </div>
                 <!-- End textarea -->
                 <p class="text-center">
-                    <button name="submit" id="contact-form-button" type="submit" class="btn btn-quattro"
+                    <button name="submit" id="contact-form-button" type="submit" class="btn btn-quattro btn-contact"
                             data-error-message="Error!"
                             data-sending-message="Enviando..." data-ok-message="Mensaje Enviado"><i
                             class="fa fa-paper-plane"></i>Enviar mensaje
@@ -181,9 +215,18 @@
     ga('send', 'pageview');
 
 </script>
+
 <!-- Custom Theme JavaScript -->
 <script src="{{ STATIC_URL }}ikerocio/bootstrap/js/grayscale.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
+<script>
+    $('.member-thumb').hover(function () {
+        $(this).effect("shake", {
+            times: 1
+        });
+    });
+</script>
 </body>
 
 </html>

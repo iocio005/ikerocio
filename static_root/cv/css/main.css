@@ -91,7 +91,7 @@ PHOTO (AVATAR)
 }
 
 #text-header h1 span {
-    color: #F0563D;
+    color: #096B88;
 }
 
 #text-header h1 sup {
@@ -115,7 +115,7 @@ DEFAULT BOX
 }
 
 .box h2 {
-    color: #EC7263;
+    color: #096B88;
     font-size: 1.8em;
     font-weight: 700;
     text-transform: uppercase;
@@ -130,7 +130,9 @@ DEFAULT BOX
     font-size: 1.3em;
     line-height: 1.5em;
 }
-
+.description p{
+    font-size:1.0em;
+}
 /*******************************************
 EDUCATION
 *******************************************/
@@ -149,13 +151,13 @@ EDUCATION
     top: 0;
     content: ' ';
     display: block;
-    background: #ec7263;
-    background: -moz-linear-gradient(top, #ffffff 0%, #ec7263 7%, #ec7263 89%, #ffffff 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(7%, #ec7263), color-stop(89%, #ec7263), color-stop(100%, #ffffff));
-    background: -webkit-linear-gradient(top, #ffffff 0%, #ec7263 7%, #ec7263 89%, #ffffff 100%);
-    background: -o-linear-gradient(top, #ffffff 0%, #ec7263 7%, #ec7263 89%, #ffffff 100%);
-    background: -ms-linear-gradient(top, #ffffff 0%, #ec7263 7%, #ec7263 89%, #ffffff 100%);
-    background: linear-gradient(to bottom, #ffffff 0%, #ec7263 7%, #ec7263 89%, #ffffff 100%);
+    background:#096B88;
+    background: -moz-linear-gradient(top, #ffffff 0%, #096B88 7%, #096B88 89%, #ffffff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(7%, #096B88), color-stop(89%, #096B88), color-stop(100%, #ffffff));
+    background: -webkit-linear-gradient(top, #ffffff 0%, #096B88 7%, #096B88 89%, #ffffff 100%);
+    background: -o-linear-gradient(top, #ffffff 0%, #096B88 7%, #096B88 89%, #ffffff 100%);
+    background: -ms-linear-gradient(top, #ffffff 0%, #096B88 7%, #096B88 89%, #ffffff 100%);
+    background: linear-gradient(to bottom, #ffffff 0%, #096B88 7%, #096B88 89%, #ffffff 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0);
 }
 
@@ -286,7 +288,7 @@ SKILLS
 *******************************************/
 .item-skills {
     height: 30px;
-    background: #F0563D;
+    background: #096B88;
     color: #fff;
     padding: 5px 10px;
     margin-bottom: 5px;
@@ -380,7 +382,7 @@ HOBBIES
     margin-right: 5px;
     margin-bottom: 5px;
     padding: 5px 5px 5px 5px;
-    background: #A75265;
+    background: #096B88;
     position: relative;
     font-size: 1.2em;
 }

@@ -35,7 +35,6 @@ p {
         margin: 0 0 35px;
         font-size: 20px;
         line-height: 1.6;
-        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
     }
 }
@@ -338,7 +337,8 @@ a:focus {
 
 @media (min-width: 767px) {
     .content-section {
-        padding-top: 250px;
+        padding-top: 112px;
+        padding-bottom:65px;
     }
 
     .download-section {
@@ -361,17 +361,17 @@ a:focus {
 }
 
 .btn-default {
-    border: 1px solid #FFFFFF;
-    color: #FFFFFF;
-    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+    background-color: white;
 }
 
 .btn-default:hover,
 .btn-default:focus {
-    border: 1px solid #28c3ab;
+    border: 1px solid #fff;
     outline: 0;
-    color: #000;
-    background-color: #28c3ab;
+    color: #fff;
+    background-color: black;
 }
 
 .btn-twitter:hover,
@@ -380,12 +380,27 @@ a:focus {
     color: #000;
     background-color: #4099FF;
     }
-
+.btn-contact{
+    border:1px solid #fff;
+    color:#fff;
+    background-color: #2F2F2F;
+}
+.btn-contact:hover,
+.btn-contact:focus{
+    border:1px solid #2F2F2F;
+    color:#000;
+    background-color: #ffffff;
+}
+.btn-cv{
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: #096B88;
+}
 .btn-cv:hover,
 .btn-cv:focus{
-    border: 1px solid #000;
-    color: #fff;
-    background-color: rgba(195, 56, 56, 0.89);
+    border: 1px solid #096B88;
+    color: #000;
+    background-color: #ffffff;
 }
 .btn-blog{
     border: 1px solid #000;
@@ -394,9 +409,9 @@ a:focus {
  }
 .btn-blog:hover,
 .btn-blog:focus{
-    border: 1px solid #000;
+    border: 1px solid #fff;
     color: #fff;
-    background-color: #545454;
+    background-color: #000;
  }
 
 .btn-github:hover,

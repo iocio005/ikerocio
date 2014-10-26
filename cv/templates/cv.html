@@ -70,14 +70,30 @@
                     </div>
                 {% endfor %}
             </div>
-        <!-- CONFERENCES -->
+            <!-- CONFERENCES -->
             <div class="box">
                 <h2>CONFERENCIAS / CHARLAS</h2>
                 {% for conference in cv.conferences.all %}
                     <div class="job clearfix">
                         <div class="col-xs-9">
-                            <div class="where">{{ conference.name }} | {{conference.year }}</div>
+                            <div class="where">{{ conference.name }} | {{ conference.year }}</div>
                             <div class="year">{{ conference.place }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- EXPERIENCES -->
+            <div class="box">
+                <h2>PROYECTOS</h2>
+                {% for project in cv.projects.all %}
+                    <div class="job clearfix">
+                        <div class="col-xs-3">
+                            <div class="where">{{ project.type.all|join:',' }}</div>
+
+                        </div>
+                        <div class="col-xs-9">
+                            <div class="profession"><a href="{{ project.url }}">{{ project.title }}</a></div>
+                            <div class="description">{{ project.description|markdown }}</div>
                         </div>
                     </div>
                 {% endfor %}
@@ -132,7 +148,7 @@
                 {% for hobbie in cv.hobbies.all %}
                     <div class="hobby">{{ hobbie.hobbie }}</div>
                 {% endfor %}
-                </div>
+            </div>
         </div>
     </div>
 </div>

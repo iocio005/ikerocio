@@ -1,5 +1,5 @@
 from django.db import models
-from ikerocio.models import Icon
+from ikerocio.models import Icon, WebImages
 
 class Milestone(models.Model):
     title = models.CharField('Title', max_length=100)
@@ -7,6 +7,7 @@ class Milestone(models.Model):
     year = models.IntegerField('Year')
 
     class Meta:
+        ordering = ['-year']
         abstract = True
 
     def __str__(self):
@@ -62,6 +63,27 @@ class Conferences(models.Model):
     def __str__(self):
         return self.name.encode('ascii', 'ignore')
 
+    class Meta:
+        ordering = ['-year']
+
+class ProjectType(models.Model):
+    type = models.CharField('Type', max_length=40)
+
+    def __str__(self):
+        return self.type
+
+class Project(models.Model):
+    title = models.TextField('Title', max_length=70)
+    picture = models.ForeignKey(WebImages)
+    url = models.URLField('URL')
+    description = models.TextField('Description about project')
+    publish = models.BooleanField('Is Visible?', default=False)
+    type = models.ManyToManyField(ProjectType)
+    slug = models.SlugField('slug')
+
+    def __str__(self):
+        return '%s' % self.title
+
 class CV(models.Model):
     first_presentation = models.TextField('Presentation', help_text='Presentation')
     about_me = models.TextField('About me', help_text='About me')
@@ -73,7 +95,9 @@ class CV(models.Model):
     hobbies = models.ManyToManyField(Hobbies)
     conferences = models.ManyToManyField(Conferences)
     publish = models.BooleanField('Publish?', default=False)
+    projects = models.ManyToManyField(Project)
 
     def __str__(self):
         return self.first_presentation.encode('ascii', 'ignore')
+
 

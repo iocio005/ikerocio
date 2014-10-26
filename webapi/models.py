@@ -10,3 +10,10 @@ class TwitterApi(models.Model):
 
     def __str__(self):
         return self.default_word.encode('ascii', 'ignore')
+
+class EasyMail(models.Model):
+    username = models.EmailField('Mail')
+    password = models.CharField('Password', max_length=20)
+
+    def __str__(self):
+        return self.username
